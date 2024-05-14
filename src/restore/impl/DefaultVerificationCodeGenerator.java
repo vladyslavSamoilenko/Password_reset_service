@@ -4,7 +4,7 @@ import restore.VerificationCodeGenerator;
 
 import java.util.Random;
 
-public class DefaultVerificationCodeGenerator implements VerificationCodeGenerator {
+public final class DefaultVerificationCodeGenerator implements VerificationCodeGenerator {
     private Random random = new Random();
     private int length;
 

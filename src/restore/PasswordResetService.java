@@ -1,6 +1,6 @@
 package restore;
 
-public class PasswordResetService {
+public final class PasswordResetService {
     private AccountRepository accountRepository;
     private AccountNotFoundByEmailHandler accountNotFoundByEmail;
     private AccountNotActiveHandler accountNotActiveHandler;
@@ -22,5 +22,18 @@ public class PasswordResetService {
         accountRepository.update(account);
         emailService.sendPasswordResetEmail(email, code);
         return "passord_reset_success.html";
+    }
+
+
+    public PasswordResetService(AccountRepository accountRepository,
+                                AccountNotFoundByEmailHandler accountNotFoundByEmail,
+                                AccountNotActiveHandler accountNotActiveHandler,
+                                VerificationCodeGenerator verificationCodeGenerator,
+                                EmailService emailService) {
+        this.accountRepository = accountRepository;
+        this.accountNotFoundByEmail = accountNotFoundByEmail;
+        this.accountNotActiveHandler = accountNotActiveHandler;
+        this.verificationCodeGenerator = verificationCodeGenerator;
+        this.emailService = emailService;
     }
 }
